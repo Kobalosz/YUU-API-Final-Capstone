@@ -40,12 +40,12 @@ public class ShoppingCartService
     }
     // add additional methods here
 
-    public ShoppingCart addProduct(int userId, int productId, int quantity)
+    public ShoppingCart addProduct(int userId, int productId)
     {
         CartItem existing = shoppingCartRepository
-                .findByUserIdAndProductId(userId, productId);
+                .findByUserIdAndProductId(userId, productId).orElse(null);
         if(existing == null) {
-            existing.setQuantity(existing.getQuantity() + quantity);
+                existing.setQuantity(existing.getQuantity() + 1);
             shoppingCartRepository.save(existing);
         }else{
 
@@ -53,7 +53,6 @@ public class ShoppingCartService
             CartItem newItem = new CartItem();
             newItem.setUserId(userId);
             newItem.setProductId(productId);
-            newItem.setQuantity(quantity);
             shoppingCartRepository.save(newItem);
         }
         return getByUserId(userId);
@@ -63,7 +62,7 @@ public class ShoppingCartService
     public ShoppingCart updateProduct(int userId, int productId, int quantity)
     {
         CartItem existing = shoppingCartRepository
-                .findByUserIdAndProductId(userId, productId);
+                .findByUserIdAndProductId(userId, productId).orElse(null);
 
         if(existing != null) {
             existing.setQuantity(existing.getQuantity() + quantity);
@@ -73,9 +72,16 @@ public class ShoppingCartService
     }
 
     @Transactional
+    public ShoppingCart clearCart(int userId){
+        shoppingCartRepository.deleteByUserId(userId);
+        return getByUserId(userId);
+    }
+
+    @Transactional
     public ShoppingCart removeProduct(int userId, int productId, int quantity)
     {
         shoppingCartRepository.deleteByUserId(userId);
         return getByUserId(userId);
     }
+
 }
