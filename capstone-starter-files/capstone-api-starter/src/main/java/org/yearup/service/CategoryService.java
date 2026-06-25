@@ -25,7 +25,7 @@ public class CategoryService
     public Category getById(int categoryId)
     {
         // get category by id
-        return categoryRepository.getById(categoryId);
+        return categoryRepository.findById(categoryId).orElse(null);
     }
 
     public Category create(Category category)
@@ -48,7 +48,7 @@ public class CategoryService
     public void delete(int categoryId)
     {
         // delete category
-        Category category = categoryRepository.getById(categoryId);
+        Category category = categoryRepository.findById(categoryId).orElseThrow(null);
         categoryRepository.delete(category);
     }
 }
