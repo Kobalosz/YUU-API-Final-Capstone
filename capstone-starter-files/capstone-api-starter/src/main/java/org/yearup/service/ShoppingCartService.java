@@ -44,19 +44,19 @@ public class ShoppingCartService
     {
         CartItem existing = shoppingCartRepository
                 .findByUserIdAndProductId(userId, productId).orElse(null);
-        if(existing == null) {
-                existing.setQuantity(existing.getQuantity() + 1);
-            shoppingCartRepository.save(existing);
-        }else{
 
-
+        if (existing == null) {
             CartItem newItem = new CartItem();
             newItem.setUserId(userId);
             newItem.setProductId(productId);
+            newItem.setQuantity(1);
             shoppingCartRepository.save(newItem);
+        } else {
+            existing.setQuantity(existing.getQuantity() + 1);
+            shoppingCartRepository.save(existing);
         }
-        return getByUserId(userId);
 
+        return getByUserId(userId);
     }
 
     public ShoppingCart updateProduct(int userId, int productId, int quantity)
