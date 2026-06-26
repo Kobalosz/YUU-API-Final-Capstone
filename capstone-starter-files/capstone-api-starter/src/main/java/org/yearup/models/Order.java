@@ -12,18 +12,17 @@ public class Order
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id") private Integer orderId;
-    
+
     @Column(name = "user_id") private Integer userId;
     @Column(name = "date")  private LocalDateTime date;
     @Column(name = "address")   private String address;
     @Column(name = "city") private String city;
     @Column(name = "state") private String state;
     @Column(name = "zip")  private String zip;
-    @Column(name = "shipping_amount") private BigDecimal shippingAmount;
 
     public Order() {}
 
-    public Order(Integer userId, LocalDateTime date, String address, String city, String state, String zip, BigDecimal shippingAmount)
+    public Order(Integer userId, LocalDateTime date, String address, String city, String state, String zip)
     {
         this.userId = userId;
         this.date = date;
@@ -31,7 +30,6 @@ public class Order
         this.city = city;
         this.state = state;
         this.zip = zip;
-        this.shippingAmount = shippingAmount;
     }
 
     public Integer getOrderId() {
@@ -82,13 +80,6 @@ public class Order
     public void setZip(String zip)
     {
         this.zip = zip;
-    }
-    public BigDecimal getShippingAmount() {
-        return shippingAmount;
-    }
-    public void setShippingAmount(BigDecimal shippingAmount)
-    {
-        this.shippingAmount = shippingAmount;
     }
 
 

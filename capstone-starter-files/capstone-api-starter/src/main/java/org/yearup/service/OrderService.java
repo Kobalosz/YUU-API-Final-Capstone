@@ -26,13 +26,17 @@ public class OrderService
     }
 
     @Transactional
-    public Order checkout(int userId)
+    public Order checkout(int userId, String address, String city, String state, String zipCode)
     {
        ShoppingCart cart = shoppingCartService.getByUserId(userId);
 
        Order order = new Order();
        order.setUserId(userId);
        order.setDate(LocalDateTime.now());
+       order.setAddress(address);
+       order.setCity(city);
+       order.setState(state);
+       order.setZip(zipCode);
        orderRepository.save(order);
 
        cart.getItems().values().forEach(item -> {
