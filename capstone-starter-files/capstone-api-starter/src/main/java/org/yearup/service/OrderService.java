@@ -55,7 +55,7 @@ public class OrderService
            orderLineItem.setProductId(item.getProductId());
            orderLineItem.setQuantity(item.getQuantity());
            orderLineItem.setSalesPrices(item.getProduct().getPrice());
-           orderLineItem.setDiscount(item.getProduct().getPrice());
+           orderLineItem.setDiscount(0);
            orderLineItemRepository.save(orderLineItem);
        });
        shoppingCartService.clearCart(userId);

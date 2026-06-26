@@ -29,6 +29,9 @@ public class ProfileService
         Profile oldProfile = profileRepository.findById(id).orElse(null);
         oldProfile.setAddress(profile.getAddress());
         oldProfile.setCity(profile.getCity());
+//        Bruh...
+        oldProfile.setZip(profile.getZip());
+        oldProfile.setState(profile.getState());
         oldProfile.setEmail(profile.getEmail());
         oldProfile.setPhone(profile.getPhone());
         oldProfile.setFirstName(profile.getFirstName());

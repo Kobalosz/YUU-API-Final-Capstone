@@ -67,7 +67,7 @@ public class ShoppingCartController
     // https://localhost:8080/cart/products/15  (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated; return the cart (200 OK)
     @PutMapping("products/{productId}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public ShoppingCart updateCart(@PathVariable int productId, @RequestBody ShoppingCartItem cartItem, Principal principal)
     {
         String userName = principal.getName();
