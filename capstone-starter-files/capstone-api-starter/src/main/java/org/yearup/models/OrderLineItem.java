@@ -15,7 +15,7 @@ public class OrderLineItem
 
     @Column(name = "order_id") private int orderId;
     @Column(name = "product_id") private int productId;
-    @Column(name = "sales_prices") private double salesPrices;
+    @Column(name = "sales_price") private double salesPrices;
     @Column(name = "quantity")  private int quantity;
     @Column(name = "discount") private double discount;
 

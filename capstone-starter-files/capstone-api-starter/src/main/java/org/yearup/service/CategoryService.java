@@ -40,7 +40,6 @@ public class CategoryService
 
         Category newCategory = categoryRepository.findById(categoryId).orElseThrow();
         newCategory.setName(category.getName());
-        newCategory.setCategoryId(category.getCategoryId());
         newCategory.setDescription(category.getDescription());
         return categoryRepository.save(newCategory);
     }

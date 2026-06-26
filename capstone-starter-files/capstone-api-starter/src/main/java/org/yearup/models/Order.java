@@ -19,6 +19,7 @@ public class Order
     @Column(name = "city") private String city;
     @Column(name = "state") private String state;
     @Column(name = "zip")  private String zip;
+    @Column(name = "shipping_amount") private BigDecimal shippingAmount;
 
     public Order() {}
 
@@ -80,6 +81,13 @@ public class Order
     public void setZip(String zip)
     {
         this.zip = zip;
+    }
+    public BigDecimal getShippingAmount() {
+        return shippingAmount;
+    }
+    public void setShippingAmount(BigDecimal shippingAmount)
+    {
+        this.shippingAmount = shippingAmount;
     }
 
 
