@@ -31,7 +31,6 @@ public class ShoppingCart
     {
         return items.get(productId);
     }
-
     public double getTotal()
     {
         double total = items.values()
