@@ -7,12 +7,12 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
-public class Orders
+public class Order
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "order_id") private Integer orderId;
+    
     @Column(name = "user_id") private Integer userId;
     @Column(name = "date")  private LocalDateTime date;
     @Column(name = "address")   private String address;
@@ -21,9 +21,9 @@ public class Orders
     @Column(name = "zip")  private String zip;
     @Column(name = "shipping_amount") private BigDecimal shippingAmount;
 
-    public Orders() {}
+    public Order() {}
 
-    public Orders(Integer userId, LocalDateTime date, String address, String city, String state, String zip, BigDecimal shippingAmount)
+    public Order(Integer userId, LocalDateTime date, String address, String city, String state, String zip, BigDecimal shippingAmount)
     {
         this.userId = userId;
         this.date = date;

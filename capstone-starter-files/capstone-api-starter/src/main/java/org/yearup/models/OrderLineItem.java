@@ -10,6 +10,7 @@ public class OrderLineItem
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_line_item_id")
     private int orderLineItemId;
 
     @Column(name = "order_id") private int orderId;

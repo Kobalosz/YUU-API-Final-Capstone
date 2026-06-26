@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.yearup.models.Orders;
+import org.yearup.models.Order;
 import org.yearup.service.OrderService;
 import org.yearup.service.UserService;
 
@@ -27,7 +27,7 @@ public class OrdersController
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Orders checkout(Principal principal){
+    public Order checkout(Principal principal){
         String userName = principal.getName();
         int userId = userService.getIdByUsername(userName);
         return orderService.checkout(userId);

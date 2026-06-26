@@ -3,12 +3,11 @@ package org.yearup.service;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.yearup.models.OrderLineItem;
-import org.yearup.models.Orders;
+import org.yearup.models.Order;
 import org.yearup.models.ShoppingCart;
 import org.yearup.repository.OrderLineItemRepository;
 import org.yearup.repository.OrderRepository;
 
-import java.math.BigDecimal; //I tried using BigDecimal because Gregor said it provided better financial accuracy, but I couldn't get it crackin
 import java.time.LocalDateTime;
 
 @Service
@@ -27,11 +26,11 @@ public class OrderService
     }
 
     @Transactional
-    public Orders checkout(int userId)
+    public Order checkout(int userId)
     {
        ShoppingCart cart = shoppingCartService.getByUserId(userId);
 
-       Orders order = new Orders();
+       Order order = new Order();
        order.setUserId(userId);
        order.setDate(LocalDateTime.now());
        orderRepository.save(order);
